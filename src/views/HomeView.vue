@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 
-//define a reactive variable pour la page d'accueil
+//definition des variables
 const welcome = ref('Bienvenue dans notre restaurant')
 const description = ref('Venez découvrir nos plats du jour 😋')
 </script>
