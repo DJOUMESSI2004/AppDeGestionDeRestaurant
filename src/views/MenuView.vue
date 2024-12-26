@@ -1,15 +1,19 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import MenuItem from '../components/MenuItem.vue'
 import database from '../database/database.json'
 
-const categories = ref({
-  entrees: database.entrees,
-  plats: database.plats,
-  desserts: database.desserts,
-  boissons_soft: database.boissons_soft,
-  vins: database.vins
+const categories = ref({})
+
+onMounted(() => {
+  categories.value = {
+    entrees: database.entrees,
+    plats: database.plats,
+    desserts: database.desserts,
+    boissons_soft: database.boissons_soft,
+    vins: database.vins
+  }
 })
 
 const cart = ref(JSON.parse(localStorage.getItem('cart')) || [])
@@ -22,7 +26,7 @@ const addToCart = (item) => {
 }
 
 const goToCart = () => {
-  router.push({ name: 'cart' })
+  router.push({name: 'cart'})
 }
 
 const formatCategoryName = (category) => {
@@ -34,13 +38,17 @@ const formatCategoryName = (category) => {
   <div class="menu">
     <h1 class="restaurant-title">Le restaurant</h1>
     <div class="cart-icon" @click="goToCart">
-      <img src="../assets/panier.png" alt="Cart" />
+      <img src="../assets/panier.png" alt="Cart"/>
       <span class="cart-count">{{ cart.length }}</span>
     </div>
     <div v-for="(items, category) in categories" :key="category" class="category">
       <h2>{{ formatCategoryName(category) }}</h2>
       <div class="items">
-        <MenuItem v-for="item in items" :key="item.id" :item="item" @add-to-cart="addToCart" />
+        <MenuItem v-for="item in items" :key="item.id" :item="item" @add-to-cart="addToCart">
+          <template v-if="item.isNew" #badge>
+            <span class="badge">Nouveau</span>
+          </template>
+        </MenuItem>
       </div>
     </div>
   </div>
@@ -123,5 +131,16 @@ const formatCategoryName = (category) => {
   .items {
     flex-direction: column;
   }
+}
+
+.badge {
+  background-color: red;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 0.8em;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 </style>

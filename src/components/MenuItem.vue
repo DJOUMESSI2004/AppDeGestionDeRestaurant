@@ -19,6 +19,7 @@ const addToCart = () => {
       <h3>{{ item.name }}</h3>
       <p>{{ item.description }}</p>
       <p>{{ item.price }}€</p>
+      <slot name="badge"></slot>
       <button @click="addToCart">Ajouter au panier</button>
     </div>
   </div>

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { useRouter } from 'vue-router'
 
 const cart = ref(JSON.parse(localStorage.getItem('cart')) || [])
@@ -41,6 +41,10 @@ const removeFromCart = (item) => {
 const goBack = () => {
   router.back()
 }
+
+watch(cart, (newCart) => {
+  localStorage.setItem('cart', JSON.stringify(newCart))
+})
 </script>
 
 <template>
