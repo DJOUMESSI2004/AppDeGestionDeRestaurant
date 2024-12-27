@@ -1,12 +1,14 @@
 <script setup>
 import { defineProps, defineEmits } from 'vue'
 
+//création des props et des emits pour le composant MenuItem
 const props = defineProps({
   item: Object
 })
 
-const emits = defineEmits(['add-to-cart'])
+const emits = defineEmits(['add-to-cart']) //ajout de l'emit add-to-cart
 
+//fonction pour ajouter un item au panier
 const addToCart = () => {
   emits('add-to-cart', props.item)
 }
