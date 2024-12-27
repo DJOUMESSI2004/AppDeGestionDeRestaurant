@@ -4,8 +4,10 @@ import { useRouter } from 'vue-router'
 import MenuItem from '../components/MenuItem.vue'
 import database from '../database/database.json'
 
+// Déclaration des catégories comme une référence réactive
 const categories = ref({})
 
+// Chargement des données du menu à partir de la base de données lors du montage du composant
 onMounted(() => {
   categories.value = {
     entrees: database.entrees,
@@ -16,19 +18,25 @@ onMounted(() => {
   }
 })
 
+// Déclaration du panier comme une référence réactive, initialisée à partir du localStorage
 const cart = ref(JSON.parse(localStorage.getItem('cart')) || [])
+
+// Utilisation du routeur de Vue
 const router = useRouter()
 
+// Fonction pour ajouter un élément au panier
 const addToCart = (item) => {
   cart.value.push(item)
   localStorage.setItem('cart', JSON.stringify(cart.value))
   alert(`${item.name} a été ajouté au panier`)
 }
 
+// Fonction pour naviguer vers la page du panier
 const goToCart = () => {
   router.push({name: 'cart'})
 }
 
+// Fonction pour formater le nom des catégories
 const formatCategoryName = (category) => {
   return category.replace('_', ' ').toUpperCase()
 }

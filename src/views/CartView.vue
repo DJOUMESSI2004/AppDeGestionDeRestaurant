@@ -2,8 +2,9 @@
 import { ref, computed, watch } from 'vue'
 import { useRouter } from 'vue-router'
 
-const cart = ref(JSON.parse(localStorage.getItem('cart')) || [])
+const cart = ref(JSON.parse(localStorage.getItem('cart')) || []) //initialisation du panier avec les données du localStorage (database/database.json)
 
+//ajout de la fonctionnalité de regroupement des items du panier
 const groupedCart = computed(() => {
   const grouped = {}
   cart.value.forEach(item => {
@@ -16,19 +17,23 @@ const groupedCart = computed(() => {
   return Object.values(grouped)
 })
 
+//calcul du prix total du panier
 const totalPrice = computed(() => {
   return cart.value.reduce((total, item) => total + item.price, 0).toFixed(2)
 })
 
+//définition de la routeur
 const router = useRouter()
 
+//fonction pour passer une commande
 const placeOrder = async () => {
   alert('Order placed successfully!')
   cart.value = []
   localStorage.setItem('cart', JSON.stringify(cart.value))
-  await router.push({ name: 'menu' })
+  await router.push({ name: 'menu' }) //redirection vers la page du menu
 }
 
+//fonction pour supprimer un item du panier
 const removeFromCart = (item) => {
   const index = cart.value.findIndex(cartItem => cartItem.name === item.name)
   if (index !== -1) {
@@ -38,10 +43,12 @@ const removeFromCart = (item) => {
   }
 }
 
+//fonction pour revenir en arrière et afficher la page précédente
 const goBack = () => {
   router.back()
 }
 
+//mise à jour du localStorage à chaque modification du panier
 watch(cart, (newCart) => {
   localStorage.setItem('cart', JSON.stringify(newCart))
 })
