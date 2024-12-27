@@ -47,7 +47,6 @@ watch(cart, (newCart) => {
 </script>
 
 <template> 
-<h1>nicolas</h1>
   <div class="cart">
     <h1>Panier</h1>
     <button class="back-button" @click="goBack">Retour</button>
