@@ -1,10 +1,12 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
-import MenuItem from '../components/MenuItem.vue'
-import database from '../database/database.json'
+import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+import MenuItem from '../components/MenuItem.vue';
+import database from '../database/database.json';
 
-const categories = ref({})
+const categories = ref({});
+const cart = ref(JSON.parse(localStorage.getItem('cart')) || []); // Gestion locale du panier
+const router = useRouter();
 
 onMounted(() => {
   categories.value = {
@@ -12,39 +14,42 @@ onMounted(() => {
     plats: database.plats,
     desserts: database.desserts,
     boissons_soft: database.boissons_soft,
-    vins: database.vins
-  }
-})
-
-const cart = ref(JSON.parse(localStorage.getItem('cart')) || [])
-const router = useRouter()
+    vins: database.vins,
+  };
+});
 
 const addToCart = (item) => {
-  cart.value.push(item)
-  localStorage.setItem('cart', JSON.stringify(cart.value))
-  alert(`${item.name} a été ajouté au panier`)
-}
+  // Ajout au panier local uniquement
+  cart.value.push(item);
+  localStorage.setItem('cart', JSON.stringify(cart.value));
+  alert(`${item.name} a été ajouté au panier`);
+};
 
 const goToCart = () => {
-  router.push({name: 'cart'})
-}
+  router.push({ name: 'cart' });
+};
 
 const formatCategoryName = (category) => {
-  return category.replace('_', ' ').toUpperCase()
-}
+  return category.replace('_', ' ').toUpperCase();
+};
 </script>
 
 <template>
   <div class="menu">
     <h1 class="restaurant-title">Le restaurant</h1>
     <div class="cart-icon" @click="goToCart">
-      <img src="../assets/panier.png" alt="Cart"/>
+      <img src="../assets/panier.png" alt="Cart" />
       <span class="cart-count">{{ cart.length }}</span>
     </div>
     <div v-for="(items, category) in categories" :key="category" class="category">
       <h2>{{ formatCategoryName(category) }}</h2>
       <div class="items">
-        <MenuItem v-for="item in items" :key="item.id" :item="item" @add-to-cart="addToCart">
+        <MenuItem
+          v-for="item in items"
+          :key="item.id"
+          :item="item"
+          @add-to-cart="addToCart"
+        >
           <template v-if="item.isNew" #badge>
             <span class="badge">Nouveau</span>
           </template>
@@ -55,6 +60,7 @@ const formatCategoryName = (category) => {
 </template>
 
 <style scoped>
+/* Styles conservés */
 .menu {
   padding: 40px;
   background: url('../assets/restaurant.jpg') no-repeat center center fixed;

@@ -26,6 +26,11 @@ const router = createRouter({
       name: 'about',
       component: () => import('../views/AboutView.vue'),
     },
+    {
+      path: '/admin', // Nouvelle route pour l'administration
+      name: 'admin',
+      component: () => import('../views/AdminOrdersView.vue'), // Chargement dynamique
+    },
   ],
 })
 

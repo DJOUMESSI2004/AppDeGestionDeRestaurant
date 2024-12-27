@@ -78,5 +78,25 @@
       "price": 45.00,
       "image_url": "/src/assets/chablis.jpg"
     }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "clientName": "Jean Dupont",
+      "items": [
+        { "name": "Bœuf Bourguignon", "quantity": 2 },
+        { "name": "Coca Cola", "quantity": 1 }
+      ],
+      "status": "en attente"
+    },
+    {
+      "id": 2,
+      "clientName": "Marie Curie",
+      "items": [
+        { "name": "Salade Niçoise", "quantity": 1 },
+        { "name": "Château Margaux", "quantity": 1 }
+      ],
+      "status": "en attente"
+    }
   ]
 }
