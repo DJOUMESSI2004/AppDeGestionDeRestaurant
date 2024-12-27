@@ -3,7 +3,6 @@ import { ref, computed, watch } from 'vue'
 import { useRouter } from 'vue-router'
 
 const cart = ref(JSON.parse(localStorage.getItem('cart')) || [])
-
 const groupedCart = computed(() => {
   const grouped = {}
   cart.value.forEach(item => {
@@ -47,7 +46,8 @@ watch(cart, (newCart) => {
 })
 </script>
 
-<template>
+<template> 
+<h1>nicolas</h1>
   <div class="cart">
     <h1>Panier</h1>
     <button class="back-button" @click="goBack">Retour</button>
