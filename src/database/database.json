@@ -1,0 +1,102 @@
+{
+  "entrees": [
+    {
+      "id": 1,
+      "name": "Soupe à l'oignon",
+      "description": "Soupe traditionnelle française à base d'oignons caramélisés et de bouillon de bœuf.",
+      "price": 8.50,
+      "image_url": "/src/assets/soupe-oignon.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Salade Niçoise",
+      "description": "Salade composée de thon, olives, œufs durs, tomates et haricots verts.",
+      "price": 10.00,
+      "image_url": "/src/assets/salade-nicoise.jpg"
+    }
+  ],
+  "plats": [
+    {
+      "id": 1,
+      "name": "Bœuf Bourguignon",
+      "description": "Ragoût de bœuf mijoté au vin rouge avec des champignons, des oignons et des lardons.",
+      "price": 18.00,
+      "image_url": "/src/assets/boeuf-bourguignon.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Coq au Vin",
+      "description": "Poulet braisé au vin rouge avec des champignons, des oignons et des lardons.",
+      "price": 17.50,
+      "image_url": "/src/assets/coq-au-vin.jpg"
+    }
+  ],
+  "desserts": [
+    {
+      "id": 1,
+      "name": "Crème Brûlée",
+      "description": "Crème à la vanille avec une croûte de sucre caramélisé.",
+      "price": 7.00,
+      "image_url": "/src/assets/creme-brulee.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Tarte Tatin",
+      "description": "Tarte aux pommes caramélisées servie à l'envers.",
+      "price": 7.50,
+      "image_url": "/src/assets/tarte-tatin.jpg"
+    }
+  ],
+  "boissons_soft": [
+    {
+      "id": 1,
+      "name": "Coca Cola",
+      "description": "Boisson gazeuse au cola.",
+      "price": 3.00,
+      "image_url": "/src/assets/coca-cola.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Fanta",
+      "description": "Boisson gazeuse à l'orange.",
+      "price": 3.00,
+      "image_url": "/src/assets/fanta.jpg"
+    }
+  ],
+  "vins": [
+    {
+      "id": 1,
+      "name": "Château Margaux",
+      "description": "Vin rouge de Bordeaux.",
+      "price": 120.00,
+      "image_url": "/src/assets/chateau-margaux.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Chablis",
+      "description": "Vin blanc de Bourgogne.",
+      "price": 45.00,
+      "image_url": "/src/assets/chablis.jpg"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "clientName": "Jean Dupont",
+      "items": [
+        { "name": "Bœuf Bourguignon", "quantity": 2 },
+        { "name": "Coca Cola", "quantity": 1 }
+      ],
+      "status": "en attente"
+    },
+    {
+      "id": 2,
+      "clientName": "Marie Curie",
+      "items": [
+        { "name": "Salade Niçoise", "quantity": 1 },
+        { "name": "Château Margaux", "quantity": 1 }
+      ],
+      "status": "en attente"
+    }
+  ]
+}
