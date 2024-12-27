@@ -48,7 +48,7 @@ watch(cart, (newCart) => {
 
 <template> 
   <div class="cart">
-    <h1>Panier</h1>
+    <h1>Panier test</h1>
     <button class="back-button" @click="goBack">Retour</button>
     <div v-if="groupedCart.length === 0">Votre panier est vide.</div>
     <div v-else>
